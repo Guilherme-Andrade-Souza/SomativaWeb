@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
 :root {
     --preto: #01030D;
     --azul-claro: #ffffff;
@@ -6,6 +9,8 @@
     --azul-header-transfarencia: #16183863;
     --cobalto: #16498C;
     --ciano: #99E9F2;
+    --font-titulo: "Zalando Sans Expanded", sans-serif;
+    --font-texto: "TikTok Sans", sans-serif;
 }
 
 
@@ -14,6 +19,13 @@
     margin: 0;
 }
 
+h1,h2,h3 {
+    font-family: var(--font-titulo);
+}
+
+p {
+    font-family: var(--font-texto);
+}
 
 #header {
     position: relative;
