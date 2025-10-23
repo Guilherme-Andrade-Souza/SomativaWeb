@@ -1,6 +1,6 @@
 :root {
     --preto: #01030D;
-    --azul-claro: #0F5AF2;
+    --azul-claro: #ffffff;
     --azul-escuro: #113A8C;
     --azul-header: #161838;
     --azul-header-transfarencia: #16183863;
@@ -31,6 +31,7 @@
     padding: 15px;
     justify-content: space-around;
     align-items: center;
+    background-color: var(--azul-claro);
 }
 
 #quem_somos {
@@ -41,9 +42,10 @@
 #catalogos {
     padding: 2%;
     background-color: var(--cobalto);
+    box-shadow: 0px 1px 23px 1px #000e24;
 }
 
-#display_pokemon, #display_yugioh, .display_magic{
+#display_pokemon, #display_yugioh, #display_magic{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -65,4 +67,15 @@
 .pokemon_card:hover, .yugioh_card:hover{
     width: 12%;
     transition-duration: 500ms;
+}
+
+#footer {
+    background-color: var(--azul-header);
+    height: 5vh;
+}
+
+#texto_footer {
+    color: aliceblue;
+    text-align: center;
+    padding-top: 2vh;
 }
