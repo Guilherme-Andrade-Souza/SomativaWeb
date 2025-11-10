@@ -1,93 +1,177 @@
-@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-    --preto: #01030D;
-    --azul-claro: #ffffff;
-    --azul-escuro: #113A8C;
-    --azul-header: #161838;
-    --azul-header-transfarencia: #16183863;
-    --cobalto: #16498C;
-    --ciano: #99E9F2;
-    --font-titulo: "Zalando Sans Expanded", sans-serif;
-    --font-texto: "TikTok Sans", sans-serif;
+    /* Cores principais */
+    --color-primary: #113A8C;
+    --color-secondary: #16498C;
+    --color-accent: #99E9F2;
+    
+    /* Cores de fundo */
+    --bg-dark: #01030D;
+    --bg-header: #161838;
+    --bg-gradient-1: linear-gradient(135deg, var(--bg-dark), var(--color-primary));
+    --bg-gradient-2: linear-gradient(165deg, var(--color-secondary), var(--color-primary));
+    
+    /* Cores de texto */
+    --text-light: #FFFFFF;
+    --text-muted: rgba(255,255,255,0.7);
+    --text-dark: #01030D;
+    
+    /* Tipografia */
+    --font-heading: 'Outfit', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-size-sm: clamp(0.8rem, 1vw, 0.9rem);
+    --font-size-base: clamp(1rem, 1.1vw, 1.1rem);
+    --font-size-lg: clamp(1.2rem, 2vw, 1.5rem);
+    --font-size-xl: clamp(1.5rem, 3vw, 2.2rem);
+    
+    /* Layout */
+    --container-width: 1200px;
+    --spacing-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+    --spacing-sm: clamp(0.5rem, 1vw, 1rem);
+    --spacing-md: clamp(1rem, 2vw, 2rem);
+    --spacing-lg: clamp(2rem, 4vw, 4rem);
+    
+    /* Efeitos */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.15);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.25);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.35);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
+/* Reset e base */
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1,h2,h3 {
-    font-family: var(--font-titulo);
+body {
+    background: var(--bg-gradient-1);
+    min-height: 100vh;
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
-p {
-    font-family: var(--font-texto);
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
 }
 
+/* Layout principal */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Header */
 #header {
-    position: relative;
-    background-color: var(--azul-header);
-    box-shadow: 0px 1px 23px 1px #000e24;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-header);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 #logo {
-    width: 5%;
-    padding: 5px;
+    width: clamp(45px, 5vw, 65px);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: var(--transition-base);
 }
 
+/* Seção Quem Somos */
 #quem_somos_contatos {
+    background: rgba(255,255,255,0.98);
+    border-radius: var(--radius-md);
     display: flex;
-    padding: 15px;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--azul-claro);
+    gap: var(--spacing-md);
 }
 
 #quem_somos {
-    width: 30%;
-    text-align: justify;
+    color: var(--text-dark);
+    h1 {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-sm);
+        background: var(--bg-gradient-2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
+/* Grid de Cards */
 #catalogos {
-    padding: 2%;
-    background-color: var(--cobalto);
-    box-shadow: 0px 1px 23px 1px #000e24;
+    background: var(--bg-gradient-2);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
 }
 
-#display_pokemon, #display_yugioh, #display_magic{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+#display_pokemon, #display_yugioh, #display_magic {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: var(--spacing-sm);
 }
 
+/* Cards */
 .pokemon_card, .yugioh_card {
-    user-select: none;
-    width: 10%;
-    margin: 1%;
-    padding: 1%;
-    background: var(--azul-header-transfarencia);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.589);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid var(--azul-header);
+    aspect-ratio: 2.5/3.5;
+    width: 100%;
+    max-width: 100px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition-base);
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-base);
+    }
+    
+    &:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: var(--shadow-lg);
+        z-index: 2;
+        
+        img {
+            filter: brightness(1.1);
+        }
+    }
 }
 
-.pokemon_card:hover, .yugioh_card:hover{
-    width: 12%;
-    transition-duration: 500ms;
-}
-
+/* Footer */
 #footer {
-    background-color: var(--azul-header);
-    height: 5vh;
+    background: var(--bg-header);
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    text-align: center;
 }
 
 #texto_footer {
-    color: aliceblue;
-    text-align: center;
-    padding-top: 2vh;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    :root {
+        --spacing-md: clamp(0.75rem, 1.5vw, 1.5rem);
+    }
+    
+    #quem_somos_contatos {
+        flex-direction: column;
+    }
+    
+    #display_pokemon, #display_yugioh, #display_magic {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
 }
