@@ -11,6 +11,7 @@
 		<section class="form-wrap">
 			<h1>Dados enviados</h1>
 			<p class="muted" id="statusMsg"></p>
+            <p id="dadosfornecidos"><strong>Dados:</strong></p>
 			<div id="result"></div>
 			<p style="margin-top:12px;"><a class="btn" href="form.html">Voltar ao formulário</a></p>
 		</section>
@@ -19,14 +20,23 @@
 	<script>
         (function contato(){
             const parametros = new URLSearchParams(window.location.search);
-            const nome = parametros.get('nome');
+            const nome = parametros.get('name');
             const email = parametros.get('email');
             const telefone = parametros.get('phone');
             const assunto = parametros.get('subject');
             const messagem = parametros.get('message');
             const statusMsg = document.getElementById('statusMsg');
+            const resultado = document.getElementById('result');
 
             statusMsg.textContent = `Mensagem enviada com sucesso!`;
+            resultado.innerHTML = `
+            <p><strong>Nome:</strong> ${nome}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Telefone:</strong> ${telefone}</p>
+            <p><strong>Assunto:</strong> ${assunto}</p>
+            <p><strong>Mensagem:</strong> ${messagem}</p>
+            `;
+
 
         })();
 	</script>
