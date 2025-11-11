@@ -14,59 +14,40 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="about.html">Sobre</a></li>
-                <li><a href="#catalogos">Catálogos</a></li>
+                <li><a href="catalogo.html">Catálogos</a></li>
                 <li><a href="form.html">Contato</a></li>
             </ul>
         </nav>
     </header>
-    <main>  
-        <section id="quem_somos_contatos">
-            <div id="quem_somos">
-                <h1>Quem Somos</h1>
-                <p>
-                <br>A Pweb TCGcards nasceu de uma paixão que compartilhamos com você: a estratégia, a coleção e a emoção de cada booster aberto. Somos mais do que apenas uma loja; somos jogadores, colecionadores e entusiastas dedicados ao universo dos Trading Card Games.<br>
-                <br>
-                Nossa missão é ser o ponto de encontro definitivo para a comunidade TCG. Oferecemos uma seleção criteriosa dos seus jogos favoritos, desde os últimos lançamentos até cards raros e acessórios essenciais para proteger seu deck.<br>
-                <br>
-                Entendemos a importância de um ambiente confiável e justo. Por isso, cada produto em nosso catálogo é tratado com o máximo cuidado, garantindo autenticidade e qualidade. Na Pweb TCGcards, você não é apenas um cliente, mas parte de uma comunidade crescente que celebra a cultura TCG.<br>
-                <br>
-                Seja você um duelista competitivo buscando a carta que falta para o seu meta, ou um colecionador em busca daquela peça especial, estamos aqui para ajudar sua jornada no hobby.<br>
-                <br>
-                Bem-vindo à Pweb TCGcards.<br>
-                </p>
-            </div>
-            
-            <div id="informações">
-                <h3>Telefone: 41 9 9999-9999</h3>
-                <h3>Email: pwegtcgcards.comercial@gmail.com</h3>
-                <h3>Endereço: rua pitangas 123, centro, Curiba</h3>
-            </div>
+    <main>
+        <section class="hero-section">
+            <h1 class="hero-title">Bem-vindo à Pweb TCGcards</h1>
+            <p class="hero-subtitle">Sua loja especializada em Trading Card Games</p>
         </section>
 
-        <div id="catalogos">
-            <h2>Veja nosso catalogo a venda</h2>
-            <div id="display_pokemon">
-                <img class="pokemon_card" src="img/pokemon-cards/1.jpeg" alt="" >
-                <img class="pokemon_card" src="img/pokemon-cards/2.jpeg" alt="" >
-                <img class="pokemon_card" src="img/pokemon-cards/3.jpeg" alt="" >
-                <img class="pokemon_card" src="img/pokemon-cards/4.jpeg" alt="" >
+        <section class="actions-section">
+            <div id="catalogos">
+                <h3>Catálogo</h3>
+                <p class="section-description">Explore nossa coleção completa de cards</p>
+                <button onclick="window.location.href='catalogo.html'" class="aba-filtro">Acessar Catálogo</button>
             </div>
-            <div id="display_yugioh">
-                <img class="yugioh_card" src="img/yugioh-cards/1.jpeg" alt="">
-                <img class="yugioh_card" src="img/yugioh-cards/2.jpeg" alt="">
-                <img class="yugioh_card" src="img/yugioh-cards/3.jpeg" alt="">
-                <img class="yugioh_card" src="img/yugioh-cards/4.jpeg" alt="">
+            
+            <div class="contact-section">
+                <h3>Entre em contato</h3>
+                <p class="section-description">Tire suas dúvidas ou faça seu pedido</p>
+                <button onclick="window.location.href='form.html'" class="button-intection">Fale Conosco</button>
             </div>
-            <div id="display_magic">
-    
-            </div>
-        </div>
-        
-        <h3>Entre em contato</h3>
-        <a href="form.html" target="_blank" ><p>Entre em contato</p></a>
-        
+        </section>
     </main>
     <footer id="footer">
+        <div class="footer-content">
+            <div id="informações">
+                <h4>Contato</h4>
+                <p><strong>Telefone:</strong> (41) 9 9999-9999</p>
+                <p><strong>Email:</strong> pwegtcgcards.comercial@gmail.com</p>
+                <p><strong>Endereço:</strong> Rua Pitangas, 123 - Centro, Curitiba - PR</p>
+            </div>
+        </div>
         <p id="texto_footer">Todos os direitos exclusivos do Pweb TCGcards™</p>
     </footer>
 </body>
