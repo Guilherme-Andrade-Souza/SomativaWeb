@@ -387,9 +387,9 @@ main {
     }
 }
 .form-result {
-    box-shadow: 9px 10px 8px -7px rgba(176,171,171,0.98);
-    -webkit-box-shadow: 9px 10px 8px -7px rgba(176,171,171,0.98);
-    -moz-box-shadow: 9px 10px 8px -7px rgba(176,171,171,0.98);
+    box-shadow: 1px 0px 8px 3px rgba(176,171,171,0.98);
+    -webkit-box-shadow: 1px 0px 8px 3px rgba(176,171,171,0.98);
+    -moz-box-shadow: 1px 0px 8px 3px rgba(176,171,171,0.98);
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
