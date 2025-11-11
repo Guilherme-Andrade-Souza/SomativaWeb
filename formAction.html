@@ -7,6 +7,28 @@
     <title>formAbout</title>
 </head>
 <body>
-    
+	<main class="container">
+		<section class="form-wrap">
+			<h1>Dados enviados</h1>
+			<p class="muted" id="statusMsg"></p>
+			<div id="result"></div>
+			<p style="margin-top:12px;"><a class="btn" href="form.html">Voltar ao formulário</a></p>
+		</section>
+	</main>
+
+	<script>
+        (function contato(){
+            const parametros = new URLSearchParams(window.location.search);
+            const nome = parametros.get('nome');
+            const email = parametros.get('email');
+            const telefone = parametros.get('phone');
+            const assunto = parametros.get('subject');
+            const messagem = parametros.get('message');
+            const statusMsg = document.getElementById('statusMsg');
+
+            statusMsg.textContent = `Mensagem enviada com sucesso!`;
+
+        })();
+	</script>
 </body>
 </html>
