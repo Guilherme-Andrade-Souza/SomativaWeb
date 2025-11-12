@@ -56,36 +56,6 @@
         </div>       
     </section>
 
-    <script>
-        // Sistema de filtro por abas
-        document.addEventListener('DOMContentLoaded', function() {
-            const abas = document.querySelectorAll('.aba-filtro');
-            const categorias = document.querySelectorAll('.categoria-cartas');
-
-            abas.forEach(aba => {
-                aba.addEventListener('click', function() {
-                    const filtro = this.getAttribute('data-filtro');
-                    
-                    // Remove classe active de todas as abas
-                    abas.forEach(a => a.classList.remove('active'));
-                    // Adiciona classe active na aba clicada
-                    this.classList.add('active');
-                    
-                    // Mostra/esconde categorias baseado no filtro
-                    categorias.forEach(categoria => {
-                        const categoriaTipo = categoria.getAttribute('data-categoria');
-                        
-                        if (filtro === 'todos') {
-                            categoria.style.display = 'grid';
-                        } else if (filtro === categoriaTipo) {
-                            categoria.style.display = 'grid';
-                        } else {
-                            categoria.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
