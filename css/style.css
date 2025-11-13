@@ -131,6 +131,7 @@ main {
 
 #quem_somos {
     color: var(--text-dark);
+    padding: 1%;
     h1 {
         font-size: var(--font-size-xl);
         margin-bottom: var(--spacing-sm);
@@ -273,13 +274,14 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
     gap: var(--spacing-sm);
+    
 }
 
 /* Cards */
 .pokemon_card, .yugioh_card {
     aspect-ratio: 2.5/3.5;
     width: 100%;
-    max-width: 100px;
+    max-width: 400px;
     border-radius: var(--radius-sm);
     overflow: hidden;
     position: relative;
