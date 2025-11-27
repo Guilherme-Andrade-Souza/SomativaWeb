@@ -36,8 +36,3 @@ quantidade_cartas int unsigned,
 foreign key (pedidos_id_pedidos) references pedidos(id_pedidos),
 foreign key (cartas_id_cartas) references cartas(id_cartas)
 );
-describe table login;
-describe table cartas;
-describe table contato;
-describe table pedidos;
-describe table pedidos_cartas;
