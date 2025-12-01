@@ -49,6 +49,13 @@
     box-sizing: border-box;
 }
 
+/* Correção de bug: garante que imagens não estourem containers e remove espaço extra inferior */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     background: var(--bg-gradient-1);
     min-height: 100vh;
@@ -56,6 +63,7 @@ body {
     font-size: var(--font-size-base);
     color: var(--text-light);
     line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem lateral acidental */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -81,9 +89,10 @@ main {
 #header {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000; /* Aumentado para garantir que fique acima de cards com hover */
     background: var(--bg-header);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Suporte Safari */
     border-bottom: 1px solid rgba(255,255,255,0.1);
     display: flex;
     align-items: center;
@@ -114,6 +123,7 @@ main {
     padding: 8px 10px;
     border-radius: var(--radius-sm);
     transition: var(--transition-base);
+    display: block; /* Garante área de clique correta */
 }
 
 #top-nav a:hover {
@@ -127,19 +137,23 @@ main {
     border-radius: var(--radius-md);
     display: flex;
     gap: var(--spacing-md);
+    overflow: hidden; /* Garante que filhos não quebrem o radius */
 }
 
 #quem_somos {
     color: var(--text-dark);
-    padding: 1%;
-    h1 {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-sm);
-        background: var(--bg-gradient-2);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+    padding: 2%; /* Ajustado de 1% para melhor respiro */
+    flex: 1; /* Garante que ocupe espaço proporcional */
+}
+
+#quem_somos h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    background: var(--bg-gradient-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color-primary); /* Fallback para browsers antigos */
 }
 
 /* Hero Section */
@@ -159,6 +173,7 @@ main {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* Nota: text-shadow pode conflitar com text-fill-color em alguns browsers, mas mantido conforme pedido */
 }
 
 .hero-subtitle {
@@ -244,7 +259,12 @@ main {
     cursor: pointer;
     transition: var(--transition-base);
     backdrop-filter: blur(8px);
-    display: inline-block;
+    
+    /* Correção visual: inline-flex centraliza melhor o texto verticalmente que inline-block */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
     text-decoration: none;
     box-shadow: var(--shadow-sm);
     min-width: 200px;
@@ -266,15 +286,16 @@ main {
 
 .categoria-cartas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    /* Ajustado minmax para 150px para evitar cards minúsculos em desktop */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: var(--spacing-sm);
 }
 
 #display_pokemon, #display_yugioh, #display_magic {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    /* Ajustado minmax para 150px para evitar cards minúsculos em desktop */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: var(--spacing-sm);
-    
 }
 
 /* Cards */
@@ -286,23 +307,24 @@ main {
     overflow: hidden;
     position: relative;
     transition: var(--transition-base);
-    
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition-base);
-    }
-    
-    &:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: var(--shadow-lg);
-        z-index: 2;
-        
-        img {
-            filter: brightness(1.1);
-        }
-    }
+}
+
+.pokemon_card img, .yugioh_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-base);
+    display: block; /* Garante renderização correta sem gaps */
+}
+
+.pokemon_card:hover, .yugioh_card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+    z-index: 2;
+}
+
+.pokemon_card:hover img, .yugioh_card:hover img {
+    filter: brightness(1.1);
 }
 
 /* Footer */
@@ -374,7 +396,8 @@ main {
     }
     
     #display_pokemon, #display_yugioh, #display_magic {
-        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        /* Ajustado para 120px para garantir legibilidade no mobile */
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
     
     .aba-filtro, .button-intection {
@@ -382,12 +405,14 @@ main {
         font-size: clamp(0.85rem, 2vw, 1rem);
         width: 100%;
         max-width: 100%;
+        min-width: unset; /* Remove min-width fixo para evitar overflow em telas <320px */
     }
     
     #filtros-abas {
         gap: var(--spacing-xs);
     }
 }
+
 .form-result {
     box-shadow: 1px 0px 8px 3px rgba(176,171,171,0.98);
     -webkit-box-shadow: 1px 0px 8px 3px rgba(176,171,171,0.98);
@@ -411,10 +436,9 @@ main {
     cursor: pointer;
     font-weight: 700;
     transition: transform .12s ease, box-shadow .12s ease;
-
-    &:hover{
-        transform: translateY(-5px) scale(1.05);
-    }
+    display: inline-block; /* Garante comportamento correto do transform */
 }
 
-
+.btn-return:hover {
+    transform: translateY(-5px) scale(1.05);
+}
